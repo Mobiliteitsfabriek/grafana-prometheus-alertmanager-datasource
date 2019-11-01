@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+docker-compose up --build
+rm alertmanager-datasource.zip
+zip -r alertmanager-datasource.zip dist
