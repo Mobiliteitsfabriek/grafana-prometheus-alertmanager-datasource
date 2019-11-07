@@ -1,9 +1,25 @@
 version: "3"
 
 services:
-  container:
+  builder:
+    container_name: builder
     build:
       dockerfile: Dockerfile
       context: .
     volumes:
       - "./:/usr/src/app/"
+
+  fileserver:
+    container_name: fileserver
+    image: nginx
+    volumes:
+      - './alertmanager-datasource.zip:/usr/share/nginx/html/alertmanager-datasource.zip'
+    networks:
+      - mobidesk_default
+    ports:
+      - "8787:80"
+
+networks:
+  mobidesk_default:
+    external:
+      name: mobidesk_default
