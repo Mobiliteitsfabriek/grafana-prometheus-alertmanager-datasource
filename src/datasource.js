@@ -25,14 +25,14 @@ export class GenericDatasource {
         }
     }
 
-    createUrl({queryActive, querySilenced, queryInhibited, filter = []}) {
+    createUrl({queryActive, querySilenced, queryInhibited, ref = []}) {
         const active = queryActive ? 'true' : 'false';
         const silenced = querySilenced ? 'true' : 'false';
         const inhibited = queryInhibited ? 'true' : 'false';
         let url = `${this.url}/api/v2/alerts?active=${active}&silenced=${silenced}&inhibited=${inhibited}`;
 
-        if (filter !== undefined && filter.length > 0) {
-            url += filter.map(x => `&filter=${x}`).join('');
+        if (ref !== undefined && ref.length > 0) {
+            url += ref.map(x => `&filter=${x}`).join('');
         }
 
         return url;
