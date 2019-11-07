@@ -116,16 +116,16 @@ System.register(['lodash'], function (_export, _context) {
                         var queryActive = _ref.queryActive,
                             querySilenced = _ref.querySilenced,
                             queryInhibited = _ref.queryInhibited,
-                            _ref$ref = _ref.ref,
-                            ref = _ref$ref === undefined ? [] : _ref$ref;
+                            _ref$expr = _ref.expr,
+                            expr = _ref$expr === undefined ? [] : _ref$expr;
 
                         var active = queryActive ? 'true' : 'false';
                         var silenced = querySilenced ? 'true' : 'false';
                         var inhibited = queryInhibited ? 'true' : 'false';
                         var url = this.url + '/api/v2/alerts?active=' + active + '&silenced=' + silenced + '&inhibited=' + inhibited;
 
-                        if (ref !== undefined && ref.length > 0) {
-                            url += ref.map(function (x) {
+                        if (expr !== undefined && expr.length > 0) {
+                            url += expr.map(function (x) {
                                 return '&filter=' + x;
                             }).join('');
                         }
