@@ -167,7 +167,7 @@ System.register(['lodash'], function (_export, _context) {
                             queryActive: true,
                             querySilenced: false,
                             queryInhibited: false,
-                            filter: query
+                            expr: query
                         };
                         return this.backendSrv.datasourceRequest({
                             url: this.createUrl(defaultTargetData),

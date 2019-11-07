@@ -75,7 +75,7 @@ export class GenericDatasource {
             queryActive: true,
             querySilenced: false,
             queryInhibited: false,
-            filter: query
+            expr: query
         };
         return this.backendSrv.datasourceRequest({
             url: this.createUrl(defaultTargetData),
