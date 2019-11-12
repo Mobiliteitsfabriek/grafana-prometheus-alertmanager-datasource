@@ -476,13 +476,15 @@ System.register(['lodash'], function (_export, _context) {
 
                             var exprArray = expr.split(/[;,.\n ]/).filter(function (x) {
                                 return x.length > 0;
+                            }).map(function (x) {
+                                return _this2.templateSrv.replace(x, {}, 'pipe');
                             });
 
                             return _extends({}, props, {
+                                type: type,
+                                legendFormat: legendFormat,
                                 target: _this2.templateSrv.replace(target),
-                                expr: exprArray,
-                                type: type || 'single',
-                                legendFormat: legendFormat || ""
+                                expr: exprArray
                             });
                         });
                         return options;

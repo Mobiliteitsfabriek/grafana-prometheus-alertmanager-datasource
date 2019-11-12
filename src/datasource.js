@@ -254,14 +254,14 @@ export class GenericDatasource {
         });
 
         options.targets = _.map(options.targets, ({target, expr, type = 'single', legendFormat = '', ...props}) => {
-            let exprArray = expr.split(/[;,.\n ]/).filter(x => x.length > 0);
+            let exprArray = expr.split(/[;,.\n ]/).filter(x => x.length > 0).map(x => this.templateSrv.replace(x, {}, 'pipe'));
 
             return {
                 ...props,
+                type,
+                legendFormat,
                 target: this.templateSrv.replace(target),
-                expr: exprArray,
-                type: type || 'single',
-                legendFormat: legendFormat || ""
+                expr: exprArray
             };
         });
         return options;
